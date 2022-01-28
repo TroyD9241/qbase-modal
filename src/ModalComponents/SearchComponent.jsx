@@ -1,9 +1,9 @@
-export const BuyComponent = () => {
+export const SearchComponent = () => {
     return (
         <>
             <h1>Hiii</h1>
             <div>
-                gwpojepwojpojegws
+                From search
             </div>
         </>
     )
