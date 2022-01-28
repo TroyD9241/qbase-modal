@@ -1,11 +1,11 @@
 import "./App.css";
 import { Nav } from "./Navbar/Navbar";
+import { ComponentModal } from "./ComponentModal/ComponentModal";
 
 function App() {
   return (
     <div className="App">
-      <Nav />
-      <div>Navbar</div>
+      <ComponentModal />
     </div>
   );
 }

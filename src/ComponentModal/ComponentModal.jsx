@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { Button } from 'react-bootstrap'
 
-import {BuyComponent, SellComponent} from '../ModalComponents'
+import { BuyComponent } from '../ModalComponents/BuyComponent'
+import {SellComponent} from '../ModalComponents/SellComponent'
 
 
 const modalComponentMap = {
@@ -9,12 +11,16 @@ const modalComponentMap = {
 }
 
 export const ComponentModal = (props) => {
-    const [activeComponent, setActiveComponent] = useState('BUY');
+    const [activeComponent, setActiveComponent] = useState(modalComponentMap['BUY']);
 
     return (
-        <div>
-            <div activeTab={activeComponent} onChangeTab={(componentType) => setActiveComponent(componentType)}/>
-                {modalComponentMap[activeComponent]}
+        <div className='component-container'>
+            <div className='button-container'>
+                <Button variant="primary" onClick={setActiveComponent.bind(this, "BUY")} >Buy</Button>
+                <Button variant="primary" onClick={setActiveComponent.bind(this, "SELL")}>Sell</Button>
+            </div>
+            {activeComponent}
+
         </div>
     )
 }
