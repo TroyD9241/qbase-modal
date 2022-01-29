@@ -60,6 +60,7 @@ export const ComponentModal = ({ show }) => {
             </button>
             <Component
               searchText={searchText}
+              activeAsset={activeAsset}
               onClick={(value) => setActiveAsset(value)}
               onChange={(event) => {
                 setSearchText(event.target.value);

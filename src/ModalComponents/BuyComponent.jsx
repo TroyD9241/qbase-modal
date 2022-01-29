@@ -40,7 +40,7 @@ const stockInfo = [
 ];
 
 console.log(stockInfo.ticker);
-export const BuyComponent = () => {
+export const BuyComponent = ({ activeAsset }) => {
   const [inputAmount, setInputAmount] = useState(0);
   const [openMenu, setOpenMenu] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
@@ -94,6 +94,7 @@ export const BuyComponent = () => {
           </div>
         </>
       ) : null}
+
       <div id="footer" className="bg-red-500">
         <p>
           {balance[0].name}
