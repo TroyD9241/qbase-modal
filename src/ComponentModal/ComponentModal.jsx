@@ -22,43 +22,40 @@ export const ComponentModal = ({ show }) => {
     return ReactDOM.createPortal(
       <div>
         {show ? (
-          <div className="component-container">
-            <div className="button-container">
+          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-orange-100">
+            <div className="tabs" class="flex">
               <button
-                variant="primary"
+                class="flex items-center h-12 px-4 py-2 text-md text-center text-orange-500
+                        border-b-0 border-orange-500 sm:text-base dark:border-orange-500 rounded-t-md
+                        dark:orange-500 whitespace-nowrap focus:outline-none
+                            "
                 onClick={setActiveComponent.bind(null, "BUY")}
               >
                 Buy
               </button>
 
               <button
-                variant="primary"
+                class="flex items-center h-12 px-4 py-2 text-md text-center text-orange-500
+                            border-b-0 border-orange-500 sm:text-base dark:border-orange-500 rounded-t-md
+                            dark:orange-500 whitespace-nowrap focus:outline-none
+                                "
                 onClick={setActiveComponent.bind(null, "SELL")}
               >
                 Sell
               </button>
-
-              <button
-                variant="primary"
-                onClick={setActiveComponent.bind(null, "SEARCH")}
-              >
-                Ticker
-              </button>
-
-              <button
-                variant="primary"
-                onClick={setActiveComponent.bind(null, "BUYREVIEW")}
-              >
-                Purchase
-              </button>
-
-              <button
-                variant="primary"
-                onClick={setActiveComponent.bind(null, "SELLREVIEW")}
-              >
-                Sell
-              </button>
             </div>
+
+            <button onClick={setActiveComponent.bind(null, "SEARCH")}>
+              TickerInfo
+            </button>
+
+            <button onClick={setActiveComponent.bind(null, "BUYREVIEW")}>
+              Purchase
+            </button>
+
+            <button onClick={setActiveComponent.bind(null, "SELLREVIEW")}>
+              Sell
+            </button>
             <Component />
           </div>
         ) : null}
