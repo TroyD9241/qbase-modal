@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { InfoCard } from "../InfoCard/InfoCard";
 
 const accounts = [
   {
@@ -38,15 +39,19 @@ const stockInfo = [
   },
 ];
 
+console.log(stockInfo.ticker);
 export const BuyComponent = () => {
   const [inputAmount, setInputAmount] = useState(0);
   const [openMenu, setOpenMenu] = useState(false);
-  const [show, setShow] = useState(false);
+  const [showDropDown, setShowDropDown] = useState(false);
 
   const toggle = () => {
     setOpenMenu(!openMenu);
   };
 
+  const toggleDropDown = () => {
+    setShowDropDown(!showDropDown);
+  };
   return (
     <div id="account-buttons">
       <div class="p-1.5 w-full sm:w-auto overflow-hidden bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-700">
@@ -68,7 +73,7 @@ export const BuyComponent = () => {
         ></input>
       </div>
 
-      <div id="limitations">
+      <div onClick={() => toggle()} id="limitations">
         <p>min amount feefw</p>
         <button>10</button>
         <button>25</button>
@@ -76,8 +81,19 @@ export const BuyComponent = () => {
         <button>100</button>
       </div>
 
-      <div id="stock-info">Stock dropdown</div>
+      <button id="stock-info" className="" onClick={() => toggleDropDown()}>
+        stock Info
+      </button>
 
+      {showDropDown ? (
+        <>
+          <div>
+            {stockInfo[0].ticker}
+            {stockInfo[0].name}
+            {stockInfo[0].trend}
+          </div>
+        </>
+      ) : null}
       <div id="footer" className="bg-red-500">
         <p>
           {balance[0].name}
