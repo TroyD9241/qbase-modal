@@ -1,22 +1,20 @@
-import "./App.css";
 import { useState } from "react";
-import { Button } from "react-bootstrap";
 import { ComponentModal } from "./ComponentModal/ComponentModal";
 
 function App() {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   return (
-    <div className="app">
+    <div className="bg-slate-500">
       <div className="app-btn">
-        <Button
+        <button
           variant="outline-warning"
           size="lg"
           onClick={() => toggle()}
           className="btn"
         >
           Buy & Sell
-        </Button>
+        </button>
       </div>
       <></>
       <ComponentModal show={modal} />

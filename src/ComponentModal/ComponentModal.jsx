@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Button } from 'react-bootstrap'
 import ReactDOM from 'react-dom'
 import { BuyComponent } from '../ModalComponents/BuyComponent'
 import {SellComponent} from '../ModalComponents/SellComponent'
@@ -7,7 +6,6 @@ import { SearchComponent } from '../ModalComponents/SearchComponent'
 import { BuyReviewComponent } from '../ModalComponents/BuyReviewComponent'
 import {SellReviewComponent} from '../ModalComponents/SellReviewComponent'
 
-import './ComponentModal.css'
 
 const modalComponentMap = {
     BUY: BuyComponent,
@@ -29,15 +27,15 @@ export const ComponentModal = ({ show }) => {
                     <div className='component-container'>
 
                         <div className='button-container'>
-                            <Button variant="primary" onClick={setActiveComponent.bind(null, "BUY")}>Buy</Button>
+                            <button variant="primary" onClick={setActiveComponent.bind(null, "BUY")}>Buy</button>
 
-                            <Button variant="primary" onClick={setActiveComponent.bind(null, "SELL")}>Sell</Button>
+                            <button variant="primary" onClick={setActiveComponent.bind(null, "SELL")}>Sell</button>
 
-                            <Button variant="primary" onClick={setActiveComponent.bind(null, "SEARCH")}>Ticker</Button>
+                            <button variant="primary" onClick={setActiveComponent.bind(null, "SEARCH")}>Ticker</button>
 
-                            <Button variant="primary" onClick={setActiveComponent.bind(null, "BUYREVIEW")}>Purchase</Button>
+                            <button variant="primary" onClick={setActiveComponent.bind(null, "BUYREVIEW")}>Purchase</button>
 
-                            <Button variant="primary" onClick={setActiveComponent.bind(null, "SELLREVIEW")}>Sell</Button>
+                            <button variant="primary" onClick={setActiveComponent.bind(null, "SELLREVIEW")}>Sell</button>
 
                         </div>
                         <Component />
