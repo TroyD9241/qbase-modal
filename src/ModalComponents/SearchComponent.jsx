@@ -12,9 +12,7 @@ const stockTicker = [
   },
 ];
 
-export const SearchComponent = () => {
-  const [searchText, setSearchText] = useState("");
-
+export const SearchComponent = ({ searchText, onChange }) => {
   return (
     <>
       <div id="search-bar">
@@ -22,7 +20,7 @@ export const SearchComponent = () => {
           placeholder="Search"
           type="text"
           name="s"
-          onChange={(event) => setSearchText(event.target.value)}
+          onChange={onChange}
         ></input>
       </div>
       {stockTicker
@@ -30,10 +28,10 @@ export const SearchComponent = () => {
           if (searchText === "") {
             return stock;
           } else if (
-            stock.name
+            stock?.name
               .toString()
               .toLowerCase()
-              .includes(searchText.toLowerCase())
+              .includes(searchText?.toLowerCase())
           ) {
             return stock;
           }
