@@ -91,6 +91,14 @@ export const BuyComponent = () => {
       </div>
 
       <div id="stock-info">Stock dropdown</div>
+
+      <div id="footer" className="bg-red-500">
+        <p>
+          {balance[0].name}
+
+          {balance[0].amount}
+        </p>
+      </div>
     </div>
   );
 };
