@@ -38,8 +38,7 @@ const stockInfo = [
   },
 ];
 
-export const BuyComponent = ({ searchText }) => {
-  console.log(searchText);
+export const BuyComponent = () => {
   const [inputAmount, setInputAmount] = useState(0);
   const [openMenu, setOpenMenu] = useState(false);
   const [show, setShow] = useState(false);
@@ -47,6 +46,7 @@ export const BuyComponent = ({ searchText }) => {
   const toggle = () => {
     setOpenMenu(!openMenu);
   };
+
   return (
     <div id="account-buttons">
       <div class="p-1.5 w-full sm:w-auto overflow-hidden bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-700">
@@ -61,7 +61,11 @@ export const BuyComponent = ({ searchText }) => {
         </div>
       </div>
       <div id="input-amount">
-        <input placeholder="$0" type="number"></input>
+        <input
+          placeholder="$0"
+          type="number"
+          onChange={(event) => setInputAmount(event.target.value)}
+        ></input>
       </div>
 
       <div id="limitations">

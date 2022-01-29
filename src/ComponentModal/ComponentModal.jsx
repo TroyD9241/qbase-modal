@@ -16,6 +16,7 @@ const modalComponentMap = {
 
 export const ComponentModal = ({ show }) => {
   const [searchText, setSearchText] = useState("");
+  const [activeAsset, setActiveAsset] = useState(null);
   const root = document.getElementById("modal-root");
   const [activeComponent, setActiveComponent] = useState("BUY");
   const Component = modalComponentMap[activeComponent];
@@ -59,6 +60,7 @@ export const ComponentModal = ({ show }) => {
             </button>
             <Component
               searchText={searchText}
+              onClick={(value) => setActiveAsset(value)}
               onChange={(event) => {
                 setSearchText(event.target.value);
               }}

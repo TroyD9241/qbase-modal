@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StockCard } from "../StockCard/StockCard";
 
 const stockTicker = [
@@ -12,7 +12,7 @@ const stockTicker = [
   },
 ];
 
-export const SearchComponent = ({ searchText, onChange }) => {
+export const SearchComponent = ({ searchText, onChange, onClick }) => {
   return (
     <>
       <div id="search-bar">
@@ -37,7 +37,11 @@ export const SearchComponent = ({ searchText, onChange }) => {
           }
         })
         .map((stock, index) => {
-          return <StockCard stock={stock} index={index} />;
+          return (
+            <button onClick={() => onClick(stock)}>
+              <StockCard stock={stock} index={index} />;
+            </button>
+          );
         })}
     </>
   );
