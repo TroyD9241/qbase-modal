@@ -1,22 +1,18 @@
-import { useState } from "react";
-import { InfoCard } from "../InfoCard/InfoCard";
+import { useState, useEffect } from "react";
 
-const accounts = [
+const userInfo = [
   {
-    name: "troy",
-  },
-
-  {
-    name: "demo",
-  },
-];
-
-const balance = [
-  {
+    id: 1,
     name: "troy",
     amount: 100,
   },
+  {
+    id: 2,
+    name: "demo",
+    amount: 200,
+  },
 ];
+
 const assetList = [
   {
     name: "Stock",
@@ -26,45 +22,87 @@ const assetList = [
   },
 ];
 
-const stockInfo = [
-  {
-    ticker: "AAPL",
-    price: "200.22",
-    trend: "+2.3%",
-  },
-  {
-    ticker: "GGL",
-    price: "300",
-    trend: "+3.4%",
-  },
-];
-
 export const BuyComponent = ({ activeAsset }) => {
+  const [account, setAccount] = useState(userInfo[0]);
   const [inputAmount, setInputAmount] = useState(0);
-  const [openMenu, setOpenMenu] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
 
-  const toggle = () => {
-    setOpenMenu(!openMenu);
-  };
+  useEffect(() => {
+    // let userObject = userInfo.find((user) => account === user.id);
+  });
+
+  // const findUser = (userArray, account) => {
+  //   const userObject = userArray.find((user) => account === user.id);
+  //   setAccount(userObject);
+  //   return;
+  // };
 
   const toggleDropDown = () => {
     setShowDropDown(!showDropDown);
   };
+
   return (
-    <div id="account-buttons" className="">
-      <div class="flex items-center p-1.5 w-full overflow-hidden bg-gray-700 border rounded-sm">
-        <div class="flex items-center p-1.5 w-full overflow-hidden rounded-lg dark:bg-orange-100 flex justify-evenly ">
-          <button class="w-20 py-1 mr-5 text-white transition-colors duration-200 transform bg-orange-600 rounded-md focus:outline-none  hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
-            stuff
-          </button>
-          <button class="w-20 px-4 py-1 text-white transition-colors duration-200 transform bg-orange-600 rounded-md focus:outline-none hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
-            stuff
-          </button>
+    <div id="buy-comp-container" className="">
+      <div id="account-selector" className="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select
+            onChange={(event) => setAccount(event.target.value)}
+            type="select"
+            class="form-select appearance-none
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            aria-label="Default select example"
+          >
+            <option selected>Accounts...</option>
+            {Object.values(userInfo).map((user, index) => {
+              return <option value={user.id}>{user.name}</option>;
+            })}
+          </select>
         </div>
       </div>
-      <div id="input-amount">
+      <div id="account-selector" className="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select
+            onSelect={(event) => setAccount(event.target.value)}
+            class="form-select appearance-none
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            aria-label="Default select example"
+          >
+            <option selected>Asset Type...</option>
+            {Object.values(assetList).map((account) => {
+              return <option value={assetList.name}>{account.name}</option>;
+            })}
+          </select>
+        </div>
+      </div>
+      <div id="input-amount " className="flex">
         <input
+          className="bg-transparent border-dashed w-full p-5"
           placeholder="$0"
           type="number"
           onChange={(event) => setInputAmount(event.target.value)}
@@ -72,18 +110,20 @@ export const BuyComponent = ({ activeAsset }) => {
       </div>
 
       <div id="limitations">
-        <p>min amount feefw</p>
-        <div id="button-container" className="bg-red-200 flex justify-around">
-          <button>10</button>
-          <button>25</button>
-          <button>50</button>
-          <button>100</button>
+        <div
+          id="button-container"
+          className="bg-orange-100 flex justify-around"
+        >
+          <button class="bg-orange-400 rounded-md w-12">10</button>
+          <button class="bg-orange-400 rounded-md w-12">25</button>
+          <button class="bg-orange-400 rounded-md w-12">50</button>
+          <button class="bg-orange-400 rounded-md w-12">100</button>
         </div>
       </div>
 
       <button
         id="stock-info"
-        className="bg-green-300 rounded-lg w-full"
+        className="bg-orange-500 rounded-lg w-full border-2 mt-10 "
         onClick={() => toggleDropDown()}
       >
         stock Info
@@ -92,16 +132,18 @@ export const BuyComponent = ({ activeAsset }) => {
       {showDropDown ? (
         <>
           <div>
-            <p>{activeAsset.name}</p>
-            <p>{}</p>
-            <p>{stockInfo[0].trend}</p>
+            <p>Ticker: {activeAsset?.ticker}</p>
+            <p>Current Price: {activeAsset?.price}</p>
+            <p>Trend: {activeAsset?.trend}</p>
           </div>
         </>
       ) : null}
 
-      <div id="footer" className="bg-red-500 flex items-center">
-        <p> {balance[0].name} </p>
-        <p>{balance[0].amount}</p>
+      <div id="footer" className="bg-orange-100 mt-4 flex items-center">
+        <p>
+          {account?.name} has ${account?.amount}
+        </p>
+        <p></p>
       </div>
     </div>
   );

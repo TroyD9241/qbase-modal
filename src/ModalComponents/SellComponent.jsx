@@ -1,42 +1,119 @@
 import { useState } from "react";
+import { InfoCard } from "../InfoCard/InfoCard";
 
-export const SellComponent = () => {
+const userInfo = [
+  {
+    name: "troy",
+    amount: 100,
+  },
+  {
+    name: "demo",
+    amount: 200,
+  },
+];
+
+const assetList = [
+  {
+    name: "Stock",
+  },
+  {
+    name: "Crypto",
+  },
+];
+
+export const SellComponent = ({ activeAsset }) => {
+  const [account, setAccount] = useState(userInfo[0]);
   const [inputAmount, setInputAmount] = useState(0);
-  const [openMenu, setOpenMenu] = useState(false);
-  const [show, setShow] = useState(false);
+  const [showDropDown, setShowDropDown] = useState(false);
 
-  const toggle = () => {
-    setOpenMenu(!openMenu);
+  const toggleDropDown = () => {
+    setShowDropDown(!showDropDown);
   };
+
   return (
-    <div id="account-buttons">
-      <div class="flex items-center p-1.5 w-full overflow-hidden rounded-lg dark:bg-orange-100 flex justify-evenly ">
-        <button class="w-20 py-1 mr-5 text-white transition-colors duration-200 transform bg-orange-600 rounded-md focus:outline-none  hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
-          stuff
-        </button>
-        <button class="w-20 px-4 py-1 text-white transition-colors duration-200 transform bg-orange-600 rounded-md focus:outline-none hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
-          stuff
-        </button>
+    <div id="buy-comp-container" className="">
+      <div id="account-selector" className="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select
+            onChange={(event) => setAccount(event.target.value)}
+            type="select"
+            class="form-select appearance-none
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            aria-label="Default select example"
+          >
+            <option selected>Accounts...</option>
+            {Object.values(userInfo).map((user, index) => {
+              return <option value={user.index}>{user.name}</option>;
+            })}
+          </select>
+        </div>
+      </div>
+      <div id="account-selector" className="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select
+            class="form-select appearance-none
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            aria-label="Default select example"
+          >
+            <option selected>Asset Type...</option>
+            {Object.values(assetList).map((account) => {
+              return <option value={assetList.name}>{account.name}</option>;
+            })}
+          </select>
+        </div>
+      </div>
+      <div id="input-amount">
+        <input
+          className="bg-transparent border-dashed w-full p-5"
+          placeholder="$0"
+          type="number"
+          onSelect={(event) => setAccount(event.target.value)}
+        ></input>
       </div>
 
-      <div id="input-amount" className="flex justify-center  bg-green-400 ">
-        <input className="" type="number" placeholder="$0"></input>
-      </div>
-
-      <div id="limitations" className="bg-green-600 flex justify-center">
-        <p>min amount feefw</p>
-        <div id="button-container" className="">
-          <button>10</button>
-          <button>25</button>
-          <button>50</button>
-          <button>100</button>
+      <div id="limitations">
+        <div
+          id="button-container"
+          className="bg-orange-100 flex justify-around"
+        >
+          <button class="bg-orange-400 rounded-md w-12">10</button>
+          <button class="bg-orange-400 rounded-md w-12">25</button>
+          <button class="bg-orange-400 rounded-md w-12">50</button>
+          <button class="bg-orange-400 rounded-md w-12">100</button>
         </div>
       </div>
 
-      <div id="stock-info">Stock dropdown</div>
-
-      <div id="footer" className="bg-red-500">
-        <p>hi</p>
+      <div id="footer" className="bg-orange-100 mt-4 flex items-center">
+        <p>
+          {account.name} has ${account.amount}
+        </p>
+        <p></p>
       </div>
     </div>
   );

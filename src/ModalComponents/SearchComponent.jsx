@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
 import { StockCard } from "../StockCard/StockCard";
 
-const stockTicker = [
+const stockInfo = [
   {
-    name: "GGGL",
-    logo: "https://blog.hubspot.com/hubfs/image8-2.jpg",
+    ticker: "AAPL",
+    price: "200.22",
+    trend: "+2.3%",
+    logo: "https://s3-symbol-logo.tradingview.com/amazon--600.png",
   },
   {
-    name: "AMZ",
-    logo: "http://media.corporate-ir.net/media_files/IROL/17/176060/Oct18/Amazon%20logo.PNG",
+    ticker: "GGL",
+    price: "300",
+    trend: "+3.4%",
+    logo: "https://thumbs.dreamstime.com/z/google-logo-white-background-vector-format-available-google-logo-124289805.jpg",
   },
 ];
 
@@ -23,12 +27,12 @@ export const SearchComponent = ({ searchText, onChange, onClick }) => {
           onChange={onChange}
         ></input>
       </div>
-      {stockTicker
+      {stockInfo
         .filter((stock) => {
           if (searchText === "") {
             return stock;
           } else if (
-            stock?.name
+            stock?.ticker
               .toString()
               .toLowerCase()
               .includes(searchText?.toLowerCase())
