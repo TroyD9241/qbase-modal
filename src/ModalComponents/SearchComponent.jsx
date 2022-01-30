@@ -43,7 +43,7 @@ export const SearchComponent = ({ searchText, onChange, onClick }) => {
         .map((stock, index) => {
           return (
             <button onClick={() => onClick(stock)}>
-              <StockCard stock={stock} index={index} />;
+              <StockCard stock={stock} key={index} />;
             </button>
           );
         })}

@@ -65,7 +65,7 @@ export const BuyComponent = ({ activeAsset }) => {
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             aria-label="Default select example"
           >
-            <option selected>Accounts...</option>
+            <option value>Accounts...</option>
             {Object.values(userInfo).map((user, index) => {
               return <option value={user.id}>{user.name}</option>;
             })}
@@ -93,7 +93,7 @@ export const BuyComponent = ({ activeAsset }) => {
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             aria-label="Default select example"
           >
-            <option selected>Asset Type...</option>
+            <option value>Asset Type...</option>
             {Object.values(assetList).map((account) => {
               return <option value={assetList.name}>{account.name}</option>;
             })}
