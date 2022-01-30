@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+// two objects i created to act as static props
 const userInfo = [
   {
     id: 1,
@@ -21,15 +22,24 @@ const assetList = [
     name: "Crypto",
   },
 ];
+//
 
 export const BuyComponent = ({ activeAsset }) => {
+  // in the buy component we need to destructure the activeAsset passed from the ComponentModal
+  // this gives us access to the selected asset's state.
   const [account, setAccount] = useState(userInfo[0]);
+  // this is not working as I want. It's a bit difficult to manage this kind of state without context or redux
+  // this should allow us to update the user based on their selection in the select menu line:56
+  // currently works to an extent but need to spend more time debugging
   const [inputAmount, setInputAmount] = useState(0);
+  // input amount is simply the entered interger that represents the amount of money they want to use
+  // inputAmount should be passed down to component that renders a purchase component. I'm not sure if this is correcly placed in this component or should be lifted
   const [showDropDown, setShowDropDown] = useState(false);
+  // showDropDown will render the currentAssets info by clicking a button.
 
-  useEffect(() => {
-    // let userObject = userInfo.find((user) => account === user.id);
-  });
+  // useEffect(() => {
+  //   // let userObject = userInfo.find((user) => account === user.id);
+  // });
 
   // const findUser = (userArray, account) => {
   //   const userObject = userArray.find((user) => account === user.id);
@@ -40,6 +50,7 @@ export const BuyComponent = ({ activeAsset }) => {
   const toggleDropDown = () => {
     setShowDropDown(!showDropDown);
   };
+  // here is just a simple function like the modal one that changes the state to the opposite of the current state.
 
   return (
     <div id="buy-comp-container" className="">
@@ -148,3 +159,7 @@ export const BuyComponent = ({ activeAsset }) => {
     </div>
   );
 };
+
+/*
+this component is a bit of a mess imo. I think as I was working through problems I had to make consistent changes to the the strucuture.
+*/
