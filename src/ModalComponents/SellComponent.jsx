@@ -1,5 +1,9 @@
 import { useState } from "react";
 
+/*
+This component is very similar to the BuyComponent with almost no differences outside of not being entirely finished/fleshed out.
+*/
+
 const userInfo = [
   {
     name: "troy",
