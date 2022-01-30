@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { StockCard } from "../StockCard/StockCard";
 
 const stockInfo = [
@@ -16,6 +15,7 @@ const stockInfo = [
   },
 ];
 
+// we destructure out the searchText, onChange(which trigger the setSearchText), and onClick(which triggers the setActiveAsset)
 export const SearchComponent = ({ searchText, onChange, onClick }) => {
   return (
     <>
