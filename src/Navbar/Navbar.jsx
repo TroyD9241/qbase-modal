@@ -3,7 +3,9 @@ import { ComponentModal } from "../ComponentModal/ComponentModal";
 
 export const Navbar = () => {
   const [modal, setModal] = useState(false);
+  // modal is simply that the state of the modal can either be true (showing), or false (not showing)
   const toggle = () => setModal(!modal);
+  // the toggle function allows us to easily set the state of the modal to be the opposite of its current state
   return (
     <>
       <nav class="bg-white shadow dark:bg-slate-100">
@@ -20,3 +22,7 @@ export const Navbar = () => {
     </>
   );
 };
+
+/*
+This is a pretty simple navbar that I just added for a little styling and not to have the modal rendering directly on the app.
+*/

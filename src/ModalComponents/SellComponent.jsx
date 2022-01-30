@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { InfoCard } from "../InfoCard/InfoCard";
+
+/*
+This component is very similar to the BuyComponent with almost no differences outside of not being entirely finished/fleshed out.
+*/
 
 const userInfo = [
   {
@@ -24,11 +27,6 @@ const assetList = [
 export const SellComponent = ({ activeAsset }) => {
   const [account, setAccount] = useState(userInfo[0]);
   const [inputAmount, setInputAmount] = useState(0);
-  const [showDropDown, setShowDropDown] = useState(false);
-
-  const toggleDropDown = () => {
-    setShowDropDown(!showDropDown);
-  };
 
   return (
     <div id="buy-comp-container" className="">
@@ -54,7 +52,7 @@ export const SellComponent = ({ activeAsset }) => {
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             aria-label="Default select example"
           >
-            <option selected>Accounts...</option>
+            <option value>Accounts...</option>
             {Object.values(userInfo).map((user, index) => {
               return <option value={user.index}>{user.name}</option>;
             })}
@@ -81,7 +79,7 @@ export const SellComponent = ({ activeAsset }) => {
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             aria-label="Default select example"
           >
-            <option selected>Asset Type...</option>
+            <option value>Asset Type...</option>
             {Object.values(assetList).map((account) => {
               return <option value={assetList.name}>{account.name}</option>;
             })}
@@ -90,6 +88,7 @@ export const SellComponent = ({ activeAsset }) => {
       </div>
       <div id="input-amount">
         <input
+          onChange={(event) => setInputAmount(event.target.value)}
           className="bg-transparent border-dashed w-full p-5"
           placeholder="$0"
           type="number"
