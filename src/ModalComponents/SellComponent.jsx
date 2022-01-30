@@ -10,46 +10,27 @@ export const SellComponent = () => {
   };
   return (
     <div id="account-buttons">
-      <div id="asset-selector" className="relative inline-block">
-        <button
-          class="relative z-10 block p-2 text-gray-700 bg-white border border-transparent rounded-md
-                  dark:text-white focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300
-                  dark:focus:ring-blue-400 focus:ring dark:bg-gray-800 focus:outline-none"
-          onClick={() => toggle()}
-        >
-          {}
+      <div class="flex items-center p-1.5 w-full overflow-hidden rounded-lg dark:bg-orange-100 flex justify-evenly ">
+        <button class="w-20 py-1 mr-5 text-white transition-colors duration-200 transform bg-orange-600 rounded-md focus:outline-none  hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
+          stuff
         </button>
-        {openMenu ? (
-          <div class="absolute right-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800">
-            <a
-              href="#"
-              class="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
-            >
-              {" "}
-              your profile{" "}
-            </a>
-          </div>
-        ) : null}
-        <button
-          class="relative z-10 block p-2 text-gray-700 bg-white border border-transparent rounded-md
-                  dark:text-white focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300
-                  dark:focus:ring-blue-400 focus:ring dark:bg-gray-800 focus:outline-none"
-          onClick={() => toggle()}
-        >
-          {}
+        <button class="w-20 px-4 py-1 text-white transition-colors duration-200 transform bg-orange-600 rounded-md focus:outline-none hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
+          stuff
         </button>
       </div>
 
-      <div id="input-amount">
-        <input placeholder="$0"></input>
+      <div id="input-amount" className="flex justify-center  bg-green-400 ">
+        <input className="" type="number" placeholder="$0"></input>
       </div>
 
-      <div id="limitations">
+      <div id="limitations" className="bg-green-600 flex justify-center">
         <p>min amount feefw</p>
-        <button>10</button>
-        <button>25</button>
-        <button>50</button>
-        <button>100</button>
+        <div id="button-container" className="">
+          <button>10</button>
+          <button>25</button>
+          <button>50</button>
+          <button>100</button>
+        </div>
       </div>
 
       <div id="stock-info">Stock dropdown</div>

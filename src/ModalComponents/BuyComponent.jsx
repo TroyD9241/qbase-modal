@@ -39,7 +39,6 @@ const stockInfo = [
   },
 ];
 
-console.log(stockInfo.ticker);
 export const BuyComponent = ({ activeAsset }) => {
   const [inputAmount, setInputAmount] = useState(0);
   const [openMenu, setOpenMenu] = useState(false);
@@ -53,15 +52,14 @@ export const BuyComponent = ({ activeAsset }) => {
     setShowDropDown(!showDropDown);
   };
   return (
-    <div id="account-buttons">
-      <div class="p-1.5 w-full sm:w-auto overflow-hidden bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-700">
-        <div class="space-y-2 sm:space-y-0 sm:flex sm:-mx-1">
-          <button class="w-full px-4 py-1 text-white transition-colors duration-200 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
-            {accounts[0].name}
+    <div id="account-buttons" className="">
+      <div class="flex items-center p-1.5 w-full overflow-hidden bg-gray-700 border rounded-sm">
+        <div class="flex items-center p-1.5 w-full overflow-hidden rounded-lg dark:bg-orange-100 flex justify-evenly ">
+          <button class="w-20 py-1 mr-5 text-white transition-colors duration-200 transform bg-orange-600 rounded-md focus:outline-none  hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
+            stuff
           </button>
-
-          <button class="w-full px-4 py-1 text-white transition-colors duration-200 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
-            {assetList[0].name}
+          <button class="w-20 px-4 py-1 text-white transition-colors duration-200 transform bg-orange-600 rounded-md focus:outline-none hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
+            stuff
           </button>
         </div>
       </div>
@@ -73,34 +71,37 @@ export const BuyComponent = ({ activeAsset }) => {
         ></input>
       </div>
 
-      <div onClick={() => toggle()} id="limitations">
+      <div id="limitations">
         <p>min amount feefw</p>
-        <button>10</button>
-        <button>25</button>
-        <button>50</button>
-        <button>100</button>
+        <div id="button-container" className="bg-red-200 flex justify-around">
+          <button>10</button>
+          <button>25</button>
+          <button>50</button>
+          <button>100</button>
+        </div>
       </div>
 
-      <button id="stock-info" className="" onClick={() => toggleDropDown()}>
+      <button
+        id="stock-info"
+        className="bg-green-300 rounded-lg w-full"
+        onClick={() => toggleDropDown()}
+      >
         stock Info
       </button>
 
       {showDropDown ? (
         <>
           <div>
-            {stockInfo[0].ticker}
-            {stockInfo[0].name}
-            {stockInfo[0].trend}
+            <p>{activeAsset.name}</p>
+            <p>{}</p>
+            <p>{stockInfo[0].trend}</p>
           </div>
         </>
       ) : null}
 
-      <div id="footer" className="bg-red-500">
-        <p>
-          {balance[0].name}
-
-          {balance[0].amount}
-        </p>
+      <div id="footer" className="bg-red-500 flex items-center">
+        <p> {balance[0].name} </p>
+        <p>{balance[0].amount}</p>
       </div>
     </div>
   );

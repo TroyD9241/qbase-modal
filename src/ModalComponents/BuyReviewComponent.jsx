@@ -1,5 +1,4 @@
 export const BuyReviewComponent = ({ inputAmount, activeAsset }) => {
-  console.log(activeAsset.name, inputAmount);
   return (
     <>
       <h1>Hiii</h1>
